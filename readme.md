@@ -20,7 +20,7 @@ The docker-compose.yml file contains 4 services.
 
 **laravel-tasks** - Handles all the cron jobs scheduled by [laravel scheduler](https://laravel.com/docs/5.7/scheduling#introduction). It runs the bash utils/tasks.sh which is an infinite loop that runs in every 60 seconds.
 
-**laravel-queues** - Handles all the tasks triggered by the message queue. It runs the bash script utils/queues.sh which listens for now jobs from the queue.
+**laravel-queues** - Handles all the tasks triggered by the message queue. It runs the bash script utils/queues.sh which listens for now jobs from the [queue](https://laravel.com/docs/5.7/queues#introduction).
 
 **laravel-nginx** - Our HTTP service. Uses nginx.conf for the settings. You can configure nginx.conf if you want to add more configuration like for https.
 
