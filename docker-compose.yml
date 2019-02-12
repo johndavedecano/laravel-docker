@@ -1,0 +1,44 @@
+version: "3"
+services:
+  # Laravel App - Handles http requests coming from nginx
+  laravel-php:
+    image: laravel-php-fpm
+    container_name: laravel-php-fpm
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 9000:9000
+    env_file:
+      - ./.env
+    volumes:
+      - ./storage:/var/www/html/storage
+  # Laravel Tasks - Handles scheduled tasks
+  laravel-tasks:
+    image: laravel-php-fpm
+    container_name: laravel-tasks
+    depends_on:
+      - laravel-php
+    command: laravel-tasks
+    env_file:
+      - ./.env
+  # Laravel Queues - Handles background jobs
+  laravel-queues:
+    image: laravel-php-fpm
+    container_name: laravel-queues
+    depends_on:
+      - laravel-php 
+    command: laravel-queues
+    env_file:
+      - ./.env
+  # Laravel Nginx - Handles routing HTTP Requests to Laravel App
+  laravel-nginx:
+    image: nginx:latest
+    container_name: laravel-nginx
+    depends_on:
+      - laravel-php
+    ports:
+      - 8000:80
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
