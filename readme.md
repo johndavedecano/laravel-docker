@@ -16,10 +16,13 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 The docker-compose.yml file contains 4 services. 
 
-*laravel-php* - Handles the HTTP Requests coming from the laravel-nginx service
-*laravel-tasks* - Handles all the cron jobs scheduled by [laravel scheduler](https://laravel.com/docs/5.7/scheduling#introduction). It runs the bash utils/tasks.sh which is an infinite loop that runs in every 60 seconds.
-*laravel-queues* - Handles all the tasks triggered by the message queue. It runs the bash script utils/queues.sh which listens for now jobs from the queue.
-*laravel-nginx* - Our HTTP service. Uses nginx.conf for the settings. You can configure nginx.conf if you want to add more configuration like for https.
+**laravel-php** - Handles the HTTP Requests coming from the laravel-nginx service
+
+**laravel-tasks** - Handles all the cron jobs scheduled by [laravel scheduler](https://laravel.com/docs/5.7/scheduling#introduction). It runs the bash utils/tasks.sh which is an infinite loop that runs in every 60 seconds.
+
+**laravel-queues** - Handles all the tasks triggered by the message queue. It runs the bash script utils/queues.sh which listens for now jobs from the queue.
+
+**laravel-nginx** - Our HTTP service. Uses nginx.conf for the settings. You can configure nginx.conf if you want to add more configuration like for https.
 
 ### Starting up the services
 ```
